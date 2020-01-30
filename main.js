@@ -49,3 +49,20 @@ console.log(mangNhieuChieu.pop());// xóa phần tử cuối cùng của mảng 
 console.log("Giá trị của mảng bây giờ là:"+mangNhieuChieu);
 mangNhieuChieu.unshift('Phần tử thêm vào đầu');// Chèn 1 phần tử vào đầu mảng
 console.log(mangNhieuChieu);
+
+
+
+
+
+var myDog = 
+{
+    "name":  "Alis",
+    "age":  2,
+    "legs":  4,
+    "tails":  1,
+};
+console.log("Con chó của tôi tên là: "+myDog.name)
+console.log(myDog);
+delete(myDog.tails);
+console.log(myDog);
+console.log(myDog['name']);   
