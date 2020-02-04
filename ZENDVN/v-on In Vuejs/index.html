@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on trong VueJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: relative;
+        }
+
+        .box-2 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Counter: {{ counter }}</h1>
+        <button v-on:click="handleClick(5,$event)">
+            Click
+        </button>
+        <div class="box" v-on:mousemove="handleMouseMove">
+            <p>ClientX: {{ clientX }}</p>
+            <p>ClientY: {{ clientY }}</p>
+            <div class="box-2" v-on:mousemove.stop="handleMouseMoveChild">
+
+            </div>
+        </div>
+        <form action="" type="text" v-on:submit.prevent='handleSubmitForm'>
+            <!-- sử dụng v-on.prevent ở đây để ngăn cho trang web truyền dữ liệu khi ấn submit -->
+            <label for="">Nhap firstName</label>
+            <input type="text" name="firstName"><br>
+            <label for="">Nhap email</label>
+            <input type="text" name="email" v-on:keyup.13='handleSubmitForm'><br>
+            <!-- <input type="submit" value="Dang nhap"> -->
+            <!-- ----------------------------------------------------------------------------- -->
+            <!-- NGOÀI VIỆC SỬ DỤNG NÚT ĐỂ GỬI SUBMIT, VUE CÒN HỖ TRỢ SỬ DỤNG NGAY SAU KHI NHẬP LIỆU XONG TA CÓ THỂ SỬ DỤNG CÁC PHÍM TẮT KHÁC NHƯ ENTER, TAB,..( SEE MORE IN Key Codes trong VueDocument), nhưng ta phải sử dụng keycode của nó trong khi code thì máy mơi shieeur -->
+            <!-- example enter là số 13, shift là số 16, xem thêm tại keycode.info -->
+        </form>
+
+
+
+        <br>
+        Đây là ví dụ về ràng buộc 2 chiều, các bạn thử gõ vào ô bên dưới xem :)
+        <!-- Vue hỗ trợ ràng buộc dữ liệu vào biến dữ liệu đã có bằng v-model -->
+        <input v-model='dulieu' type="text">
+        <p>{{dulieu}}</p>
+        // hoặc cũng có thể làm theo cách này vẫn ra kết quả như thường
+        <input v-on:keyup='handleSubmitForm1' type="text">
+        <p>{{dulieu1}}</p>
+
+    </div>
+
+
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            clientX: 0,
+            clientY: 0,
+            dulieu: "",
+            dulieu1: ""
+        },
+        methods:
+        {
+            handleClick(number, event) {
+                console.log('click', event);
+                this.counter += number;
+            },
+            handleMouseMove(event) {
+                console.log(event)
+                this.clientX = event.clientX;
+                this.clientY = event.clientY;
+            },
+            handleMouseMoveChild(event) {
+                //event.stopPropagation();// ngăn trặn hành động này lan truyền ra các phần tử khác, ở đây là khi di chuột vào box-2 thì chỉ chạy box 2 thôi chứ không chạy box
+                //thay vì thê trong Vue có hỗ trợ dùng hàm v-on.stop để thay thế cho stopPropagation()
+                console.log('handleMouseMoveChild', event.target);
+
+            },
+            handleSubmitForm() {
+                console.log(event);
+            },
+            handleSubmitForm1(event) {
+                // console.log('Handle Submit Form 1')
+                console.log(event)
+                this.dulieu1=event.target.value
+            }
+        },
+        computed:
+        {
+            //computed thực tế cũng là chỗ gọi hàm y hệt như methos nhưng khác nhau ở chô là computed được dùng trong những method tính toán, các biến, các giá trị được gán bị thay đổi giá trị thì nó sẽ không chạy toàn bộ các hàm có trong chương trình giống như trong methods mà nó chỉ chạy hàm nào có giá trị được thay đổi, như vậy trong làm việc sẽ tăng hiệu suất, giảm thời gian khi người dùng tương tác
+
+        }
+
+    }
+    )
+</script>
+
+</html>

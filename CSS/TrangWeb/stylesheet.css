@@ -1,0 +1,110 @@
+body
+{
+    font-family: Tahoma;
+    font-size: 13px;
+    /* độ rộng của body thường là độ rộng của toàn trang nên thường lấy nó làm tiêu chuẩn */
+     width: 1000px;
+     margin:0px auto;
+    
+
+}
+
+#menu_top
+{
+    background-color: #141414;
+    /* cái này tùy các bạn 40 hay 50 hay 60 đều được tùy mình thích chiều cao của cái menu */
+    height: 40px; 
+    color: blue;
+}
+/* banner này sau này zsẽ là cái ảnh nhưng giờ mình gán màu cho nó để dễ làm việc trong quá trình thiết kế css toàn trang */
+
+
+
+#banner
+{
+background-color: red;
+/* chiều cao thì có thể tùy trang web hoặc mình thích */
+height: 280px;
+/* độ rộng thì bằng độ rộng của body thôi chứ k có gì */
+width: 1000px;
+}
+
+
+
+#main #left
+{
+width: 800px;
+background: green;
+float: left;
+min-height:400px ;
+
+} 
+
+
+
+#main #right
+{
+width: 200px;
+background-color: blue;
+float: left;
+/* độ cao tối thiểu, chứ bình thường các thẻ sẽ có nội dung chỉ bằng chiều cao các thẻ nó chứa thôi */
+min-height:400px ;
+}
+
+
+
+#footer
+{
+    background: black;
+    width: 1000px;
+    /* căn nội dung */
+    text-align: center;
+    color: white;
+    /* chiều cao content */
+    height: 60px;
+/* // ở đây nếu ta không xét vị trí cho thằng này thì nó sẽ nhảy lên đầu ngay, có thể thử bỏ thuộc tính set vị trí đi để xem thực tiễn */
+/* Ở bên trên cái main left và main right ta cho nó float left, như vậy là thằng ở dưới, nếu mà bên trên còn chỗ thì nó chứ nổi lên thôi, muốn nó không nổi lên nữa mặc dù bên trên còn chỗ thì ta dùng clear:left */
+    clear: left;
+    /* Muốn đặt chữ nằm chính giữa các thì thêm line-height bằng đúng chiều cao của background; */
+    line-height: 60px;
+}
+
+
+
+#menu_top ul
+{
+/* Với mọi ul luôn định nghĩa 2 thuộc tính: */
+margin: 0px;
+padding: 0px;
+}
+
+
+
+#menu_top ul li
+{
+/* Muốn bỏ mấy chấm đen đánh dấu là list thì ta dùng */
+list-style: none;
+/* dùng float left để cho các phần tử nằm tràn theo hàng ngang */
+float: left;
+/* border-right: 1px solid #f1f1f1; */
+}
+
+
+
+#menu_top ul li a
+{
+/* Bỏ gạch chân ta dùng  */
+text-decoration: none;
+/* Khi này ta thấy các thẻ <a> đang hiển thị dưới dạng inline, muốn set được các thuộc tính line-hight hay margin cho thẻ <a> này phải chuyển về dạng display block hoặc inline-block ( đọc thêm trên google) */
+display: inline-block;
+line-height:40px ; 
+padding: 0px 20px;
+color: #FFF;
+border-right: 1px  solid #f1f1f1;
+
+}
+
+#banner
+{
+
+}

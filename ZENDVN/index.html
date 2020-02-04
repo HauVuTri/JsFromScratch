@@ -16,9 +16,7 @@
     </header>
     <div class="container">
         <div class="list-blog">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi sunt eveniet maxime magni in, nostrum
-                facilis, temporibus, quam facere sint est blanditiis harum dicta. Tempore suscipit ut hic. Deleniti,
-                qui.</p>
+
         </div>
         <div id="app">
             <div class="cart">Giỏ hàng ({{ cardNumber }})</div>
@@ -30,7 +28,7 @@
                 </div>
                 <div class="product-content">
                     <h3 class="title">
-                        <a v-bind:href="url" v-bind:target="target">{{ title }}</a>
+                        <a v-bind:href=url v-bind:target=target>{{title}}</a>
                     </h3>
                     <p class="brand">Thương hiệu: No brand</p>
                     <p class="quantity" v-if="getProduct.quantity > 0">Còn lại: {{ getProduct.quantity }} Sản phẩm</p>

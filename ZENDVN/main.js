@@ -1,3 +1,4 @@
+
 var vueInstance = new Vue({
     el: '#app',
     data: {
@@ -21,7 +22,7 @@ var vueInstance = new Vue({
                 image: './images/black.jpg',
                 quantity: 2,
                 textColor: 'Màu Đen'
-            }, 
+            },
         ],
         listDesc: [
             'Chất liệu: polyester và thun',
@@ -45,7 +46,7 @@ var vueInstance = new Vue({
             }
         },
         handleAddToCart(e) {
-            if(this.cardNumber + 1 > this.getProduct.quantity) {
+            if (this.cardNumber + 1 > this.getProduct.quantity) {
                 alert('So luong khong du');
             } else {
                 this.cardNumber = this.cardNumber + 1;
@@ -55,8 +56,9 @@ var vueInstance = new Vue({
     },
     computed: {
         formatOriginalPrice() {
-            var number = this.price;
-            return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
+            const number = this.price;
+            return (new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number));
+            // expected output: "123.456,79 €"
         },
         formatFinalPrice() {
             var number = this.price - this.sale * this.price;
@@ -68,3 +70,4 @@ var vueInstance = new Vue({
         }
     }
 });
+
